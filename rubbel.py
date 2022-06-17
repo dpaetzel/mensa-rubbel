@@ -81,9 +81,35 @@ def fit(n_tickets, n_wins, alpha, beta):
 #
 # a / (a + b) = 1 / 5
 #
+# (a + b) / a = 5
+#
+# (a + b) = 5 * a
+#
+# b = 5 * a - a
+#
+# b = 4 * a
+#
+# Prior candidates.
+alpha = np.linspace(1, 7, 10)
+beta = 4 * alpha
+fig, ax = plt.subplots(len(alpha))
+theta = np.linspace(0, 1, 1000)
+for i, ab in enumerate(zip(alpha, beta)):
+    a, b = ab
+    prior = st.beta(a, b)
+    print()
+    print(f"Prior candidate {i}: Beta({a}, {b}).")
+    prob_mass = prior.cdf(0.5) - prior.cdf(0.05)
+    print(f"Probability mass between in [0.05, 0.5]: {prob_mass}")
+    print(f"Mean, var:", prior.stats())
+    print()
+    ax[i].plot(theta, prior.pdf(theta))
+
+plt.show()
+
 # Some tinkering gave me this prior.
-alpha = 2
-beta = 8
+alpha = 7
+beta = 28
 
 # For demonstrational purposes, we train incrementally and plot each updated
 # distribution.
