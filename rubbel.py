@@ -7,19 +7,20 @@ import stan
 
 # Different groups went to the cafeteria and received tickets/wins as follows.
 DATA = np.array([
+    # Our initial data.
     # “one of two was a win”
     [1, 2],
     # “one of four was a win”
     [1, 4],
     [0, 1],
+
     # Data from the informal poll in the Discord channel (blubber).
-    [1, 5],
-    [2, 3],
+    # [2, 3], # duplicate, also in thread
     [2, 6],
     [0, 3],
-    [0, 5],
-    [1, 6],
+
     # Data from the informal poll in the Discord channel (thread in blubber).
+    [0, 5],
     [2, 3],
     [1, 1],
     [2, 3],
