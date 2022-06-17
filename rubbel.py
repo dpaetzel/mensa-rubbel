@@ -12,13 +12,22 @@ DATA = np.array([
     # “one of four was a win”
     [1, 4],
     [0, 1],
-    # Data from the informal poll in the Discord channel.
+    # Data from the informal poll in the Discord channel (blubber).
     [1, 5],
     [2, 3],
     [2, 6],
     [0, 3],
     [0, 5],
     [1, 6],
+    # Data from the informal poll in the Discord channel (thread in blubber).
+    [2, 3],
+    [1, 1],
+    [2, 3],
+    [1, 2],
+    [0, 5],
+    [0, 6],
+    [0, 4],
+    [1, 4],
 ])
 
 plt.style.use("seaborn")
@@ -77,12 +86,15 @@ beta = 8
 
 # For demonstrational purposes, we train incrementally and plot each updated
 # distribution.
-fig, ax = plt.subplots(len(DATA) + 1, 1)
+n_inc_plots = 6
+fig, ax = plt.subplots(1 + n_inc_plots, 1)
 prior = st.beta(alpha, beta)
 theta = np.linspace(0, 1, 1000)
 ax[0].plot(theta, prior.pdf(theta))
 
-for i in range(1, len(DATA) + 1):
+# For demonstrational purposes, we train incrementally a few times and plot each
+# updated distribution.
+for i in range(1, n_inc_plots + 1):
     n_wins = DATA[0:i, 0].sum()
     n_tickets = DATA[0:i, 1].sum()
     model_, fit_, data_ = fit(n_tickets=n_tickets,
@@ -91,9 +103,16 @@ for i in range(1, len(DATA) + 1):
                               beta=beta)
     az.plot_posterior(data_, ax=ax[i])
 
-print()
+# Now plot the final distribution.
 n_wins = DATA[:, 0].sum()
 n_tickets = DATA[:, 1].sum()
+model_, fit_, data_ = fit(n_tickets=n_tickets,
+                          n_wins=n_wins,
+                          alpha=alpha,
+                          beta=beta)
+az.plot_posterior(data_)
+
+print()
 print(f"Data mean: {n_wins}/{n_tickets} =", n_wins / n_tickets)
 print()
 print(az.summary(data_))
