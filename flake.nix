@@ -29,9 +29,6 @@
           networkx
           numpy
           pandas
-
-          python
-          ipython
         ];
 
         # We use ugly venvShellHook here because packaging pystan/httpstan is
