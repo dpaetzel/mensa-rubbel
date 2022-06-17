@@ -24,4 +24,4 @@ but this way its just so much more fun. 🎉
 The posterior distribution given the currently available data looks like this:
 
 
-![Distribution](./Current distribution.png)
+![Distribution](./CurrentDistribution.png)
