@@ -31,7 +31,11 @@ DATA = np.array([
     [1, 4],
     [0, 4],
     [0, 7],
-    [1, 8], # 2022-06-20 23:14
+    [1, 8],  # 2022-06-20 23:14
+
+    # Data from the +/- poll in the Discord channel (we removed all people that
+    # were already accounted for in the previous data points).
+    [9, (9 + 32)],
 ])
 
 plt.style.use("seaborn")
