@@ -13,6 +13,7 @@ DATA = np.array([
     # “one of four was a win”
     [1, 4],
     [0, 1],
+    [0, 3],
 
     # Data from the informal poll in the Discord channel (blubber).
     # [2, 3], # duplicate, also in thread
@@ -35,7 +36,7 @@ DATA = np.array([
 
     # Data from the +/- poll in the Discord channel (we removed all people that
     # were already accounted for in the previous data points).
-    [9, (9 + 32)],
+    [10, (10 + 32)],
 ])
 
 plt.style.use("seaborn")
