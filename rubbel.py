@@ -19,6 +19,7 @@ DATA = np.array([
     # [2, 3], # duplicate, also in thread
     [2, 6],
     [0, 3],
+    [0, 4],
 
     # Data from the informal poll in the Discord channel (thread in blubber).
     [0, 5],
@@ -32,7 +33,8 @@ DATA = np.array([
     [1, 4],
     [0, 4],
     [0, 7],
-    [1, 8],  # 2022-06-20 23:14
+    [1, 8],
+    [2, 5],  # 2022-06-24 23:19
 
     # Data from the +/- poll in the Discord channel (we removed all people that
     # were already accounted for in the previous data points).
